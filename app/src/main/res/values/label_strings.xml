@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_task_name">任务名称</string>
+    <string name="label_add_task">添加任务</string>
+    <string name="label_set_time_interval">设置间隔时间</string>
+    <string name="label_set_prompt_mode">设置提示方式</string>
+    <string name="label_notification">系统通知</string>
+    <string name="label_ring">手机铃声</string>
+    <string name="label_enable_loop">是否开启循环</string>
+    <string name="label_save_take">保存任务</string>
+    <string name="label_hour">小时</string>
+    <string name="label_minutes">分钟</string>
+    <string name="label_second">秒</string>
+    <string name="label_set_task_name">设置任务名称</string>
+</resources>

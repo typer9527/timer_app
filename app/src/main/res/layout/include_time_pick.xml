@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Spinner
+            android:id="@+id/spinner_hours"
+            style="@style/SpinnerTimePick" />
+
+        <TextView
+            style="@style/TextTimeUnit"
+            android:layout_toEndOf="@id/spinner_hours"
+            android:text="@string/label_hour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Spinner
+            android:id="@+id/spinner_minutes"
+            style="@style/SpinnerTimePick" />
+
+        <TextView
+            style="@style/TextTimeUnit"
+            android:layout_toEndOf="@id/spinner_minutes"
+            android:text="@string/label_minutes" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Spinner
+            android:id="@+id/spinner_seconds"
+            style="@style/SpinnerTimePick" />
+
+        <TextView
+            style="@style/TextTimeUnit"
+            android:layout_toEndOf="@id/spinner_seconds"
+            android:text="@string/label_second" />
+    </RelativeLayout>
+</LinearLayout>

@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
     android:padding="16dp">
 
     <TextView
-        android:maxLines="1"
-        android:ellipsize="end"
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -19,13 +20,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:maxLines="1"
-        android:ellipsize="end"
         android:id="@+id/tv_des"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/switch_enable"
         app:layout_constraintStart_toStartOf="parent"

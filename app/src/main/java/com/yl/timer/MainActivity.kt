@@ -6,13 +6,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.litepal.LitePal
 import org.litepal.extension.findAll
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListener,
+    OnItemLongClickListener, OnCheckedChangeListener {
     private val taskList = mutableListOf<TaskEntity>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,7 +33,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fab_add.setOnClickListener(this)
         rv_list.layoutManager = LinearLayoutManager(this)
         rv_list.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
-        rv_list.adapter = TaskListAdapter(taskList)
+        val adapter = TaskListAdapter(taskList)
+        adapter.onItemClickListener = this
+        adapter.onItemLongClickListener = this
+        adapter.onCheckedChangeListener = this
+        rv_list.adapter = adapter
+    }
+
+    override fun onCheckedChange(checked: Boolean, position: Int) {
+        Log.e("onCheckedChange", checked.toString())
+    }
+
+    override fun onItemLongClick(position: Int) {
+        Log.e("onItemLongClick", taskList[position].toString())
+    }
+
+    override fun onItemClick(position: Int) {
+        Log.e("onItemClick", taskList[position].toString())
     }
 
     override fun onClick(p0: View?) {

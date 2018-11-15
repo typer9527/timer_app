@@ -2,7 +2,6 @@ package com.yl.timer
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -52,7 +51,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                                 getEnableLoop(),
                                 true
                             )
-                        Log.e("task", newTask.toString())
+                        newTask.save()
                     }
                 }
             }

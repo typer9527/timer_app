@@ -9,6 +9,7 @@ data class TaskEntity(
     var enableLoop: Boolean,
     var enable: Boolean
 ) : LitePalSupport() {
+    var id: Long? = null
     override fun toString(): String {
         return taskName + ", " + timeInterval + ", " +
                 promptMode + ", " + enableLoop + ", " + enable

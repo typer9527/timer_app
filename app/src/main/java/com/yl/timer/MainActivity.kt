@@ -5,15 +5,19 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.litepal.LitePal
+import org.litepal.extension.delete
 import org.litepal.extension.findAll
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListener,
     OnItemLongClickListener, OnCheckedChangeListener {
+
     private val taskList = mutableListOf<TaskEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +30,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
     }
 
     private fun updateTaskList() {
+        if (taskList.isNotEmpty()) taskList.clear()
         taskList.addAll(LitePal.findAll<TaskEntity>())
+        rv_list.adapter?.notifyDataSetChanged()
     }
 
     private fun initViews() {
@@ -45,7 +51,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
     }
 
     override fun onItemLongClick(position: Int) {
-        Log.e("onItemLongClick", taskList[position].toString())
+        showPopMenu(position)
+    }
+
+    private fun showPopMenu(position: Int) {
+        val menu = PopupMenu(this, rv_list.getChildAt(position))
+        menu.menuInflater.inflate(R.menu.menu_pop, menu.menu)
+        menu.gravity = Gravity.END
+        menu.setOnMenuItemClickListener { p0 ->
+            when (p0?.itemId) {
+                R.id.item_edit -> {
+                    onItemClick(position)
+                    true
+                }
+                R.id.item_delete -> {
+                    taskList[position].id?.let { LitePal.delete<TaskEntity>(it) }
+                    updateTaskList()
+                    true
+                }
+                else -> false
+            }
+        }
+        menu.show()
     }
 
     override fun onItemClick(position: Int) {

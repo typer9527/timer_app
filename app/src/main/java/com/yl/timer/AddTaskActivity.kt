@@ -52,6 +52,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                                 true
                             )
                         newTask.save()
+                        finish()
                     }
                 }
             }

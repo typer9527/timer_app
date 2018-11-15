@@ -17,9 +17,7 @@ class TaskListAdapter(private var list: List<TaskEntity>) : RecyclerView.Adapter
         return TaskHolder(inflate)
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: TaskHolder, p1: Int) {
         holder.itemView.tv_name.text = list[p1].taskName

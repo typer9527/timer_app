@@ -12,4 +12,6 @@
     <string name="label_minutes">分钟</string>
     <string name="label_second">秒</string>
     <string name="label_set_task_name">设置任务名称</string>
+    <string name="label_edit">编辑</string>
+    <string name="label_delete">删除</string>
 </resources>

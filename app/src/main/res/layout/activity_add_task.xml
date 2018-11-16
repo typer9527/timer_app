@@ -97,7 +97,7 @@
                 android:textSize="16sp" />
 
             <android.support.design.button.MaterialButton
-                android:id="@+id/btn_add_task"
+                android:id="@+id/btn_save_task"
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

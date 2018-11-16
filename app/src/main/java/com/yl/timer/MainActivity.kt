@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
         updateTaskList()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateTaskList()
+    }
+
     private fun updateTaskList() {
         if (taskList.isNotEmpty()) taskList.clear()
         taskList.addAll(LitePal.findAll<TaskEntity>())
@@ -76,7 +81,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
     }
 
     override fun onItemClick(position: Int) {
-        Log.e("onItemClick", taskList[position].toString())
+        val intent = Intent(this, AddTaskActivity().javaClass)
+        intent.putExtra(Constants.KEY_TASK_ID, taskList[position].id)
+        startActivity(intent)
     }
 
     override fun onClick(p0: View?) {

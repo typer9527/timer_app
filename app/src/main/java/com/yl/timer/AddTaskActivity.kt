@@ -2,12 +2,12 @@ package com.yl.timer
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import com.yl.timer.Constants.LENGTH_HOUR
 import com.yl.timer.Constants.LENGTH_MINUTE
 import com.yl.timer.Constants.LENGTH_SECOND
@@ -64,22 +64,25 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.btn_save_task -> {
-                when {
-                    et_task_name.text.isBlank() -> Toast.makeText(
-                        this,
-                        "Empty",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    getTimeInterval() == 0 -> Toast.makeText(this, "==0", Toast.LENGTH_SHORT).show()
-                    else -> {
-                        if (theTask == null)
-                            theTask = newTask()
-                        else
-                            updateTask()
-                        theTask!!.save()
-                        finish()
-                    }
+            R.id.btn_save_task -> when {
+                et_task_name.text.isBlank() -> Snackbar.make(
+                    p0, getString(R.string.label_task_name_is_empty), Snackbar.LENGTH_SHORT
+                ).setAction("", null).show()
+                getTimeInterval() == 0 -> Snackbar.make(
+                    p0, getString(R.string.label_task_time_interval_invalid), Snackbar.LENGTH_SHORT
+                ).setAction("", null).show()
+                else -> {
+                    if (theTask == null)
+                        theTask = newTask()
+                    else
+                        updateTask()
+                    theTask!!.save()
+                    Snackbar.make(p0, getString(R.string.label_task_saved), Snackbar.LENGTH_SHORT
+                    ).setAction(getString(R.string.label_ok)) { finish() }
+                        .addCallback(object : Snackbar.Callback() {
+                            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) =
+                                finish()
+                        }).show()
                 }
             }
         }

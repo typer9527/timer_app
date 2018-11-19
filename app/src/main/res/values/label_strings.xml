@@ -15,4 +15,5 @@
     <string name="label_edit">编辑</string>
     <string name="label_delete">删除</string>
     <string name="label_empty_list">任务列表空空如也\n快去添加吧</string>
+    <string name="label_time_interval">%d 小时 %d 分钟 %d 秒</string>
 </resources>

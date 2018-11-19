@@ -8,6 +8,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import com.yl.timer.Constants.LENGTH_HOUR
+import com.yl.timer.Constants.LENGTH_MINUTE
+import com.yl.timer.Constants.LENGTH_SECOND
+import com.yl.timer.Constants.MODE_NOTIFICATION
+import com.yl.timer.Constants.MODE_RING
 import kotlinx.android.synthetic.main.activity_add_task.*
 import kotlinx.android.synthetic.main.include_time_pick.*
 import org.litepal.LitePal
@@ -44,8 +49,8 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setPromptMode(task: TaskEntity) {
         when (task.promptMode) {
-            Constants.MODE_NOTIFICATION -> rb_notification.isChecked = true
-            Constants.MODE_RING -> rb_ring.isChecked = true
+            MODE_NOTIFICATION -> rb_notification.isChecked = true
+            MODE_RING -> rb_ring.isChecked = true
         }
     }
 
@@ -105,13 +110,12 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun getEnableLoop() = cb_loop.isChecked
 
-    private fun getPromptMode(): Int {
-        return if (rb_notification.isChecked) Constants.MODE_NOTIFICATION
-        else Constants.MODE_RING
-    }
+    private fun getPromptMode(): Int =
+        if (rb_notification.isChecked) MODE_NOTIFICATION else MODE_RING
+
 
     private fun getTimeInterval() =
-        currentHour * 60 * 60 * 1000 + currentMinute * 60 * 1000 + currentSecond * 1000
+        currentHour * LENGTH_HOUR + currentMinute * LENGTH_MINUTE + currentSecond * LENGTH_SECOND
 
     private fun setTimeSpinner(spinner: Spinner, timeUnit: Int) {
         val timeLength = ArrayList<String>()

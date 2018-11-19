@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.include_no_task.*
 import org.litepal.LitePal
 import org.litepal.extension.delete
 import org.litepal.extension.findAll
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
         if (taskList.isNotEmpty()) taskList.clear()
         taskList.addAll(LitePal.findAll<TaskEntity>())
         rv_list.adapter?.notifyDataSetChanged()
+        checkEmptyList()
+    }
+
+    private fun checkEmptyList() {
+        cl_no_data.visibility = if (taskList.size > 0) View.GONE else View.VISIBLE
     }
 
     private fun initViews() {
@@ -90,3 +96,4 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, OnItemClickListe
         startActivity(Intent(this, AddTaskActivity().javaClass))
     }
 }
+

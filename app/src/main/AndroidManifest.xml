@@ -20,5 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTaskActivity" />
+
+        <receiver android:name=".TimerTaskReceiver">
+            <intent-filter>
+                <action android:name="ELITOR_CLOCK" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

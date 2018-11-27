@@ -77,7 +77,8 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                     else
                         updateTask()
                     theTask!!.save()
-                    Snackbar.make(p0, getString(R.string.label_task_saved), Snackbar.LENGTH_SHORT
+                    Snackbar.make(
+                        p0, getString(R.string.label_task_saved), Snackbar.LENGTH_SHORT
                     ).setAction(getString(R.string.label_ok)) { finish() }
                         .addCallback(object : Snackbar.Callback() {
                             override fun onDismissed(transientBottomBar: Snackbar?, event: Int) =
@@ -97,7 +98,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
             spinner_seconds.selectedItemPosition,
             getPromptMode(),
             getEnableLoop(),
-            true
+            false
         )
 
     private fun updateTask() {
@@ -108,7 +109,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
         theTask!!.secondId = spinner_seconds.selectedItemPosition
         theTask!!.promptMode = getPromptMode()
         theTask!!.enableLoop = getEnableLoop()
-        theTask!!.enable = true
+        theTask!!.enable = false
     }
 
     private fun getEnableLoop() = cb_loop.isChecked

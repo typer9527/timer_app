@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_task_name">任务名称</string>
+    <string name="label_add_task">添加任务</string>
+    <string name="label_set_time_interval">设置间隔时间</string>
+    <string name="label_set_prompt_mode">设置提示方式</string>
+    <string name="label_notification">系统通知</string>
+    <string name="label_ring">手机铃声</string>
+    <string name="label_enable_loop">是否开启循环</string>
+    <string name="label_save_take">保存任务</string>
+    <string name="label_hour">小时</string>
+    <string name="label_minutes">分钟</string>
+    <string name="label_second">秒</string>
+    <string name="label_set_task_name">设置任务名称</string>
+    <string name="label_edit">编辑</string>
+    <string name="label_delete">删除</string>
+    <string name="label_empty_list">任务列表空空如也\n快去添加吧</string>
+    <string name="label_time_interval">%d 小时 %d 分钟 %d 秒</string>
+    <string name="label_task_name_is_empty">任务名称不能为空</string>
+    <string name="label_task_time_interval_invalid">时间间隔不能为 0</string>
+    <string name="label_task_saved">任务已保存</string>
+    <string name="label_ok">好的</string>
+    <string name="label_task_deleted">任务已删除</string>
+    <string name="label_undo">撤销</string>
+</resources>

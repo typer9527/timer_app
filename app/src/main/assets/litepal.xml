@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="time_task" />
+    <version value="1" />
+    <list>
+        <mapping class="com.yl.timer.TaskEntity" />
+    </list>
+    <storage value="external" />
+</litepal>
